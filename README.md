@@ -3,7 +3,7 @@
 Trabalho Final – Modelagem de Banco de Dados Completa (2º Bimestre).
 Banco de dados modelado e implementado em **PostgreSQL no Supabase**.
 
-> **Aluno(a):** _(preencher)_
+> **Aluno(a):** Cleiton Cesar Ferreira
 
 ## Cenário
 
