@@ -53,6 +53,7 @@ from pagamento p
 join ordem_servico o on o.id_os = p.id_os
 where o.status = 'concluída'
   and p.data_pagamento >= date '2026-01-01'
+  and p.data_pagamento < date '2027-01-01'
 group by to_char(p.data_pagamento, 'YYYY-MM')
 order by mes;
 
@@ -148,6 +149,8 @@ join veiculo v       on v.id_cliente = c.id_cliente
 join ordem_servico o on o.id_veiculo = v.id_veiculo
 join pagamento p     on p.id_os = o.id_os
 where o.data_abertura >= date '2026-01-01'
+  and o.data_abertura < date '2027-01-01'
+  and o.status = 'concluída'
 group by c.id_cliente, c.nome, c.cidade
 order by total_gasto desc, c.nome
 limit 10;
