@@ -31,7 +31,7 @@ O sistema deve centralizar o cadastro de clientes e veículos, registrar cada or
 - Uma OS pode conter vários serviços, e um serviço pode aparecer em várias OS (com a quantidade e o preço cobrado no momento).
 - Cada serviço consome produtos (insumos) em quantidades definidas, e cada produto pode ser usado em vários serviços.
 - Cada produto é fornecido por um fornecedor; um fornecedor pode fornecer vários produtos.
-- Cada OS possui um único pagamento, e cada pagamento pertence a uma única OS.
+- Cada OS pode possuir no máximo um pagamento, e cada pagamento pertence a uma única OS (relacionamento 0:1 do lado da OS e 1:1 do lado do pagamento).
 - O valor total da OS é a soma de (quantidade × preço cobrado) de seus serviços.
 - A data de conclusão da OS nunca pode ser anterior à data de abertura.
 
@@ -245,19 +245,21 @@ O modelo lógico foi implementado no Supabase (PostgreSQL) com o script [`sql/01
 - View `vw_os_valor_total` para o atributo derivado.
 - Row Level Security habilitado nas tabelas.
 
-### Prints do Supabase
+### Evidências do Supabase
+
+As capturas de tela foram mantidas fora do DOCX para evitar um arquivo excessivamente grande. Todas as evidências ficam organizadas no GitHub, na [pasta de prints da implementação física](prints/fisico/).
 
 **Tabelas criadas**
 
-![Tabelas criadas](prints/fisico/01_tabelas_criadas.png)
+[Visualizar Tabelas.PNG ](prints/fisico/Tabelas.PNG)
 
 **Estrutura da tabela cliente**
 
-![Estrutura de cliente](prints/fisico/02_estrutura_cliente.png)
+[Visualizar Tabela 1.PNG ](prints/fisico/Tabela 1.PNG)
 
 **Estrutura da tabela ordem_servico**
 
-![Estrutura de ordem_servico](prints/fisico/03_estrutura_ordem_servico.png)
+[Visualizar Tabela 2.PNG ](prints/fisico/Tabela 2.PNG)
 
 ## Dados
 
@@ -281,7 +283,7 @@ Observação: 500 funcionários e 500 fornecedores não são realistas para uma 
 
 **Conferência da quantidade de registros**
 
-![Contagem de registros](prints/dados/01_contagem_registros.png)
+[Abrir evidências de dados ](prints/dados/)
 
 ## CRUD
 
@@ -291,95 +293,97 @@ As operações foram executadas no SQL Editor do Supabase com o script [`sql/03_
 
 **C1 – INSERT do cliente**
 
-![C1 – INSERT do cliente](prints/crud/c1_insert_cliente.png)
+[Visualizar C1.PNG ](prints/crud/C1-C6/C1.PNG)
 
 **C2 – INSERT dos telefones**
 
-![C2 – INSERT dos telefones](prints/crud/c2_insert_telefones.png)
+[Visualizar C2.PNG ](prints/crud/C1-C6/C2.PNG)
 
 **C3 – INSERT do veículo**
 
-![C3 – INSERT do veículo](prints/crud/c3_insert_veiculo.png)
+[Visualizar C3.PNG ](prints/crud/C1-C6/C3.PNG)
 
 **C4 – INSERT da OS**
 
-![C4 – INSERT da OS](prints/crud/c4_insert_os.png)
+[Visualizar C4.PNG ](prints/crud/C1-C6/C4.PNG)
 
 **C5 – INSERT dos serviços da OS**
 
-![C5 – INSERT dos serviços da OS](prints/crud/c5_insert_os_servico.png)
+[Visualizar C5.PNG ](prints/crud/C1-C6/C5.PNG)
 
 **C6 – INSERT do pagamento**
 
-![C6 – INSERT do pagamento](prints/crud/c6_insert_pagamento.png)
+[Visualizar C6.PNG ](prints/crud/C1-C6/C6.PNG)
 
 ### Read (SELECT)
 
 **R1 – SELECT simples**
 
-![R1 – SELECT simples](prints/crud/r1_select_cliente.png)
+[Visualizar R1.PNG ](prints/crud/R1-R5/R1.PNG)
 
 **R2 – SELECT cliente, telefones e veículos**
 
-![R2 – SELECT cliente, telefones e veículos](prints/crud/r2_select_cliente_telefones_veiculos.png)
+[Visualizar R2.PNG ](prints/crud/R1-R5/R2.PNG)
 
 **R3 – SELECT visão completa da OS**
 
-![R3 – SELECT visão completa da OS](prints/crud/r3_select_os_completa.png)
+[Visualizar R3.PNG ](prints/crud/R1-R5/R3.PNG)
 
 **R4 – SELECT serviços da OS**
 
-![R4 – SELECT serviços da OS](prints/crud/r4_select_servicos_da_os.png)
+[Visualizar R4.PNG ](prints/crud/R1-R5/R4.PNG)
 
 **R5 – SELECT últimas 10 OS**
 
-![R5 – SELECT últimas 10 OS](prints/crud/r5_select_ultimas_os.png)
+[Visualizar R5.PNG ](prints/crud/R1-R5/R5.PNG)
 
 ### Update (UPDATE)
 
 **U1 – UPDATE do e-mail**
 
-![U1 – UPDATE do e-mail](prints/crud/u1_update_email.png)
+[Visualizar U1.PNG ](prints/crud/U1-U4/U1.PNG)
 
 **U2 – UPDATE OS em andamento**
 
-![U2 – UPDATE OS em andamento](prints/crud/u2_update_os_em_andamento.png)
+[Visualizar U2.PNG ](prints/crud/U1-U4/U2.PNG)
 
 **U3 – UPDATE OS concluída**
 
-![U3 – UPDATE OS concluída](prints/crud/u3_update_os_concluida.png)
+[Visualizar U3.PNG ](prints/crud/U1-U4/U3.PNG)
 
 **U4 – UPDATE do estoque**
 
-![U4 – UPDATE do estoque](prints/crud/u4_update_estoque.png)
+[Visualizar U4.PNG ](prints/crud/U1-U4/U4.PNG)
 
 ### Delete (DELETE)
 
 **D1 – Erro de integridade referencial**
 
-![D1 – Erro de integridade referencial](prints/crud/d1_erro_integridade.png)
+[Visualizar D1%20Erro%20de%20Integridade.PNG ](prints/crud/D1-D6/D1%20Erro%20de%20Integridade.PNG)
 
 **D2 – DELETE do telefone**
 
-![D2 – DELETE do telefone](prints/crud/d2_delete_telefone.png)
+[Visualizar D2.PNG ](prints/crud/D1-D6/D2.PNG)
 
 **D3 – DELETE da OS (cascata)**
 
-![D3 – DELETE da OS (cascata)](prints/crud/d3_delete_os.png)
+[Visualizar D3.PNG ](prints/crud/D1-D6/D3.PNG)
 
 **D4 – DELETE do veículo**
 
-![D4 – DELETE do veículo](prints/crud/d4_delete_veiculo.png)
+[Visualizar D4.PNG ](prints/crud/D1-D6/D4.PNG)
 
 **D5 – DELETE do cliente**
 
-![D5 – DELETE do cliente](prints/crud/d5_delete_cliente.png)
+[Visualizar D5.PNG ](prints/crud/D1-D6/D5.PNG)
 
 **D6 – Conferência final**
 
-![D6 – Conferência final](prints/crud/d6_conferencia_final.png)
+[Visualizar D6.PNG ](prints/crud/D1-D6/D6.PNG)
 
 ## Relatórios
+
+Os prints dos dez resultados estão disponíveis na [pasta de relatórios](prints/relatorios/). As consultas completas também estão no arquivo [`sql/04_relatorios.sql`](sql/04_relatorios.sql).
 
 Foram criadas 10 consultas SQL (arquivo [`sql/04_relatorios.sql`](sql/04_relatorios.sql)), todas com `SELECT`, `WHERE`, `ORDER BY` e `JOIN`, que respondem a perguntas do dia a dia da estética e mostram o relacionamento entre as tabelas.
 
@@ -402,7 +406,7 @@ where o.status in ('aberta', 'em andamento')
 order by o.data_abertura, o.id_os;
 ```
 
-![Resultado do relatório 01](prints/relatorios/r01_os_pendentes.png)
+[Visualizar print do Relatório 01](prints/relatorios/Relatorio%201.PNG)
 
 ### Relatório 02 – Últimas 20 OS concluídas
 
@@ -424,7 +428,7 @@ order by o.data_conclusao desc, o.id_os desc
 limit 20;
 ```
 
-![Resultado do relatório 02](prints/relatorios/r02_ultimas_os_concluidas.png)
+[Visualizar print do Relatório 02](prints/relatorios/Relatorio%202.PNG)
 
 ### Relatório 03 – Faturamento mensal em 2026
 
@@ -440,11 +444,12 @@ from pagamento p
 join ordem_servico o on o.id_os = p.id_os
 where o.status = 'concluída'
   and p.data_pagamento >= date '2026-01-01'
+  and p.data_pagamento < date '2027-01-01'
 group by to_char(p.data_pagamento, 'YYYY-MM')
 order by mes;
 ```
 
-![Resultado do relatório 03](prints/relatorios/r03_faturamento_mensal.png)
+[Visualizar print do Relatório 03](prints/relatorios/Relatorio%203.PNG)
 
 ### Relatório 04 – Receita por forma de pagamento
 
@@ -464,7 +469,7 @@ group by p.forma_pagamento
 order by total_recebido desc;
 ```
 
-![Resultado do relatório 04](prints/relatorios/r04_forma_pagamento.png)
+[Visualizar print do Relatório 04](prints/relatorios/Relatorio%204.PNG)
 
 ### Relatório 05 – 10 serviços mais vendidos
 
@@ -485,7 +490,7 @@ order by qtd_vendida desc, receita desc
 limit 10;
 ```
 
-![Resultado do relatório 05](prints/relatorios/r05_servicos_mais_vendidos.png)
+[Visualizar print do Relatório 05](prints/relatorios/Relatorio%205.PNG)
 
 ### Relatório 06 – Desempenho dos funcionários
 
@@ -507,7 +512,7 @@ order by valor_atendido desc
 limit 10;
 ```
 
-![Resultado do relatório 06](prints/relatorios/r06_desempenho_funcionarios.png)
+[Visualizar print do Relatório 06](prints/relatorios/Relatorio%206.PNG)
 
 ### Relatório 07 – Produtos com estoque abaixo do mínimo
 
@@ -527,7 +532,7 @@ order by falta desc, p.nome
 limit 20;
 ```
 
-![Resultado do relatório 07](prints/relatorios/r07_estoque_baixo.png)
+[Visualizar print do Relatório 07](prints/relatorios/Relatorio%207.PNG)
 
 ### Relatório 08 – 10 produtos mais consumidos
 
@@ -548,7 +553,7 @@ order by consumo_total desc
 limit 10;
 ```
 
-![Resultado do relatório 08](prints/relatorios/r08_consumo_produtos.png)
+[Visualizar print do Relatório 08](prints/relatorios/Relatorio%208.PNG)
 
 ### Relatório 09 – 10 clientes que mais gastaram em 2026
 
@@ -565,12 +570,14 @@ join veiculo v       on v.id_cliente = c.id_cliente
 join ordem_servico o on o.id_veiculo = v.id_veiculo
 join pagamento p     on p.id_os = o.id_os
 where o.data_abertura >= date '2026-01-01'
+  and o.data_abertura < date '2027-01-01'
+  and o.status = 'concluída'
 group by c.id_cliente, c.nome, c.cidade
 order by total_gasto desc, c.nome
 limit 10;
 ```
 
-![Resultado do relatório 09](prints/relatorios/r09_top_clientes_2026.png)
+[Visualizar print do Relatório 09](prints/relatorios/Relatorio%209.PNG)
 
 ### Relatório 10 – Histórico de serviços de um cliente
 
@@ -591,7 +598,7 @@ where c.id_cliente = 8
 order by o.data_abertura, o.id_os, s.nome;
 ```
 
-![Resultado do relatório 10](prints/relatorios/r10_historico_cliente.png)
+[Visualizar print do Relatório 10](prints/relatorios/Relatorio%2010.PNG)
 
 ---
 
