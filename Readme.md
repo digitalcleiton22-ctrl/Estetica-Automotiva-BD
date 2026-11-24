@@ -57,7 +57,7 @@ O modelo possui **8 entidades**: Cliente, Veículo, Funcionário, Fornecedor, Pr
 
 O Diagrama Entidade-Relacionamento (DER) foi feito na notação de Chen.
 
-![DER – Estética Automotiva](imagens/der.png)
+![DER – Estética Automotiva](estetica-automotiva-bd/imagens/der.png)
 
 ### Entidades e atributos
 
@@ -236,7 +236,7 @@ O cliente de uma OS é obtido pelo veículo (`ordem_servico → veiculo → clie
 
 ## Modelagem Física
 
-O modelo lógico foi implementado no Supabase (PostgreSQL) com o script [`sql/01_schema.sql`](sql/01_schema.sql).
+O modelo lógico foi implementado no Supabase (PostgreSQL) com o script [`sql/01_schema.sql`](estetica-automotiva-bd/sql/01_schema.sql).
 
 - Chaves primárias automáticas (`GENERATED ALWAYS AS IDENTITY`).
 - Integridade referencial com `FOREIGN KEY` e `ON DELETE` definido em todas as relações.
@@ -247,23 +247,23 @@ O modelo lógico foi implementado no Supabase (PostgreSQL) com o script [`sql/01
 
 ### Evidências do Supabase
 
-As capturas de tela foram mantidas fora do DOCX para evitar um arquivo excessivamente grande. Todas as evidências ficam organizadas no GitHub, na [pasta de prints da implementação física](prints/fisico/).
+As capturas de tela foram mantidas fora do DOCX para evitar um arquivo excessivamente grande. Todas as evidências ficam organizadas no GitHub, na [pasta de prints da implementação física](estetica-automotiva-bd/prints/fisico/).
 
 **Tabelas criadas**
 
-[Visualizar Tabelas.PNG ](prints/fisico/Tabelas.PNG)
+[Visualizar Tabelas.PNG ](estetica-automotiva-bd/prints/fisico/Tabelas.PNG)
 
 **Estrutura da tabela cliente**
 
-[Visualizar Tabela 1.PNG ](prints/fisico/Tabela 1.PNG)
+[Visualizar Tabela 1.PNG ](estetica-automotiva-bd/prints/fisico/Tabela 1.PNG)
 
 **Estrutura da tabela ordem_servico**
 
-[Visualizar Tabela 2.PNG ](prints/fisico/Tabela 2.PNG)
+[Visualizar Tabela 2.PNG ](estetica-automotiva-bd/prints/fisico/Tabela 2.PNG)
 
 ## Dados
 
-O banco foi populado com dados fictícios e coerentes com o cenário pelo script [`sql/02_dados.sql`](sql/02_dados.sql), que usa `generate_series` e valores calculados a partir do índice (rodar de novo gera os mesmos dados).
+O banco foi populado com dados fictícios e coerentes com o cenário pelo script [`sql/02_dados.sql`](estetica-automotiva-bd/sql/02_dados.sql), que usa `generate_series` e valores calculados a partir do índice (rodar de novo gera os mesmos dados).
 
 | Tabela | Registros |
 |---|---|
@@ -283,109 +283,109 @@ Observação: 500 funcionários e 500 fornecedores não são realistas para uma 
 
 **Conferência da quantidade de registros**
 
-[Abrir evidências de dados ](prints/dados/)
+[Abrir evidências de dados ](estetica-automotiva-bd/prints/dados/)
 
 ## CRUD
 
-As operações foram executadas no SQL Editor do Supabase com o script [`sql/03_crud.sql`](sql/03_crud.sql), usando um cliente de teste (CPF 12345678901) e um veículo de teste (placa QWE1R23). Ao final, os dados de teste são removidos.
+As operações foram executadas no SQL Editor do Supabase com o script [`sql/03_crud.sql`](estetica-automotiva-bd/sql/03_crud.sql), usando um cliente de teste (CPF 12345678901) e um veículo de teste (placa QWE1R23). Ao final, os dados de teste são removidos.
 
 ### Create (INSERT)
 
 **C1 – INSERT do cliente**
 
-[Visualizar C1.PNG ](prints/crud/C1-C6/C1.PNG)
+[Visualizar C1.PNG ](estetica-automotiva-bd/prints/crud/C1-C6/C1.PNG)
 
 **C2 – INSERT dos telefones**
 
-[Visualizar C2.PNG ](prints/crud/C1-C6/C2.PNG)
+[Visualizar C2.PNG ](estetica-automotiva-bd/prints/crud/C1-C6/C2.PNG)
 
 **C3 – INSERT do veículo**
 
-[Visualizar C3.PNG ](prints/crud/C1-C6/C3.PNG)
+[Visualizar C3.PNG ](estetica-automotiva-bd/prints/crud/C1-C6/C3.PNG)
 
 **C4 – INSERT da OS**
 
-[Visualizar C4.PNG ](prints/crud/C1-C6/C4.PNG)
+[Visualizar C4.PNG ](estetica-automotiva-bd/prints/crud/C1-C6/C4.PNG)
 
 **C5 – INSERT dos serviços da OS**
 
-[Visualizar C5.PNG ](prints/crud/C1-C6/C5.PNG)
+[Visualizar C5.PNG ](estetica-automotiva-bd/prints/crud/C1-C6/C5.PNG)
 
 **C6 – INSERT do pagamento**
 
-[Visualizar C6.PNG ](prints/crud/C1-C6/C6.PNG)
+[Visualizar C6.PNG ](estetica-automotiva-bd/prints/crud/C1-C6/C6.PNG)
 
 ### Read (SELECT)
 
 **R1 – SELECT simples**
 
-[Visualizar R1.PNG ](prints/crud/R1-R5/R1.PNG)
+[Visualizar R1.PNG ](estetica-automotiva-bd/prints/crud/R1-R5/R1.PNG)
 
 **R2 – SELECT cliente, telefones e veículos**
 
-[Visualizar R2.PNG ](prints/crud/R1-R5/R2.PNG)
+[Visualizar R2.PNG ](estetica-automotiva-bd/prints/crud/R1-R5/R2.PNG)
 
 **R3 – SELECT visão completa da OS**
 
-[Visualizar R3.PNG ](prints/crud/R1-R5/R3.PNG)
+[Visualizar R3.PNG ](estetica-automotiva-bd/prints/crud/R1-R5/R3.PNG)
 
 **R4 – SELECT serviços da OS**
 
-[Visualizar R4.PNG ](prints/crud/R1-R5/R4.PNG)
+[Visualizar R4.PNG ](estetica-automotiva-bd/prints/crud/R1-R5/R4.PNG)
 
 **R5 – SELECT últimas 10 OS**
 
-[Visualizar R5.PNG ](prints/crud/R1-R5/R5.PNG)
+[Visualizar R5.PNG ](estetica-automotiva-bd/prints/crud/R1-R5/R5.PNG)
 
 ### Update (UPDATE)
 
 **U1 – UPDATE do e-mail**
 
-[Visualizar U1.PNG ](prints/crud/U1-U4/U1.PNG)
+[Visualizar U1.PNG ](estetica-automotiva-bd/prints/crud/U1-U4/U1.PNG)
 
 **U2 – UPDATE OS em andamento**
 
-[Visualizar U2.PNG ](prints/crud/U1-U4/U2.PNG)
+[Visualizar U2.PNG ](estetica-automotiva-bd/prints/crud/U1-U4/U2.PNG)
 
 **U3 – UPDATE OS concluída**
 
-[Visualizar U3.PNG ](prints/crud/U1-U4/U3.PNG)
+[Visualizar U3.PNG ](estetica-automotiva-bd/prints/crud/U1-U4/U3.PNG)
 
 **U4 – UPDATE do estoque**
 
-[Visualizar U4.PNG ](prints/crud/U1-U4/U4.PNG)
+[Visualizar U4.PNG ](estetica-automotiva-bd/prints/crud/U1-U4/U4.PNG)
 
 ### Delete (DELETE)
 
 **D1 – Erro de integridade referencial**
 
-[Visualizar D1%20Erro%20de%20Integridade.PNG ](prints/crud/D1-D6/D1%20Erro%20de%20Integridade.PNG)
+[Visualizar D1%20Erro%20de%20Integridade.PNG ](estetica-automotiva-bd/prints/crud/D1-D6/D1%20Erro%20de%20Integridade.PNG)
 
 **D2 – DELETE do telefone**
 
-[Visualizar D2.PNG ](prints/crud/D1-D6/D2.PNG)
+[Visualizar D2.PNG ](estetica-automotiva-bd/prints/crud/D1-D6/D2.PNG)
 
 **D3 – DELETE da OS (cascata)**
 
-[Visualizar D3.PNG ](prints/crud/D1-D6/D3.PNG)
+[Visualizar D3.PNG ](estetica-automotiva-bd/prints/crud/D1-D6/D3.PNG)
 
 **D4 – DELETE do veículo**
 
-[Visualizar D4.PNG ](prints/crud/D1-D6/D4.PNG)
+[Visualizar D4.PNG ](estetica-automotiva-bd/prints/crud/D1-D6/D4.PNG)
 
 **D5 – DELETE do cliente**
 
-[Visualizar D5.PNG ](prints/crud/D1-D6/D5.PNG)
+[Visualizar D5.PNG ](estetica-automotiva-bd/prints/crud/D1-D6/D5.PNG)
 
 **D6 – Conferência final**
 
-[Visualizar D6.PNG ](prints/crud/D1-D6/D6.PNG)
+[Visualizar D6.PNG ](estetica-automotiva-bd/prints/crud/D1-D6/D6.PNG)
 
 ## Relatórios
 
-Os prints dos dez resultados estão disponíveis na [pasta de relatórios](prints/relatorios/). As consultas completas também estão no arquivo [`sql/04_relatorios.sql`](sql/04_relatorios.sql).
+Os prints dos dez resultados estão disponíveis na [pasta de relatórios](estetica-automotiva-bd/prints/relatorios/). As consultas completas também estão no arquivo [`sql/04_relatorios.sql`](estetica-automotiva-bd/sql/04_relatorios.sql).
 
-Foram criadas 10 consultas SQL (arquivo [`sql/04_relatorios.sql`](sql/04_relatorios.sql)), todas com `SELECT`, `WHERE`, `ORDER BY` e `JOIN`, que respondem a perguntas do dia a dia da estética e mostram o relacionamento entre as tabelas.
+Foram criadas 10 consultas SQL (arquivo [`sql/04_relatorios.sql`](estetica-automotiva-bd/sql/04_relatorios.sql)), todas com `SELECT`, `WHERE`, `ORDER BY` e `JOIN`, que respondem a perguntas do dia a dia da estética e mostram o relacionamento entre as tabelas.
 
 ### Relatório 01 – OS abertas ou em andamento
 
@@ -406,7 +406,7 @@ where o.status in ('aberta', 'em andamento')
 order by o.data_abertura, o.id_os;
 ```
 
-[Visualizar print do Relatório 01](prints/relatorios/Relatorio%201.PNG)
+[Visualizar print do Relatório 01](estetica-automotiva-bd/prints/relatorios/Relatorio%201.PNG)
 
 ### Relatório 02 – Últimas 20 OS concluídas
 
@@ -428,7 +428,7 @@ order by o.data_conclusao desc, o.id_os desc
 limit 20;
 ```
 
-[Visualizar print do Relatório 02](prints/relatorios/Relatorio%202.PNG)
+[Visualizar print do Relatório 02](estetica-automotiva-bd/prints/relatorios/Relatorio%202.PNG)
 
 ### Relatório 03 – Faturamento mensal em 2026
 
@@ -449,7 +449,7 @@ group by to_char(p.data_pagamento, 'YYYY-MM')
 order by mes;
 ```
 
-[Visualizar print do Relatório 03](prints/relatorios/Relatorio%203.PNG)
+[Visualizar print do Relatório 03](estetica-automotiva-bd/prints/relatorios/Relatorio%203.PNG)
 
 ### Relatório 04 – Receita por forma de pagamento
 
@@ -469,7 +469,7 @@ group by p.forma_pagamento
 order by total_recebido desc;
 ```
 
-[Visualizar print do Relatório 04](prints/relatorios/Relatorio%204.PNG)
+[Visualizar print do Relatório 04](estetica-automotiva-bd/prints/relatorios/Relatorio%204.PNG)
 
 ### Relatório 05 – 10 serviços mais vendidos
 
@@ -490,7 +490,7 @@ order by qtd_vendida desc, receita desc
 limit 10;
 ```
 
-[Visualizar print do Relatório 05](prints/relatorios/Relatorio%205.PNG)
+[Visualizar print do Relatório 05](estetica-automotiva-bd/prints/relatorios/Relatorio%205.PNG)
 
 ### Relatório 06 – Desempenho dos funcionários
 
@@ -512,7 +512,7 @@ order by valor_atendido desc
 limit 10;
 ```
 
-[Visualizar print do Relatório 06](prints/relatorios/Relatorio%206.PNG)
+[Visualizar print do Relatório 06](estetica-automotiva-bd/prints/relatorios/Relatorio%206.PNG)
 
 ### Relatório 07 – Produtos com estoque abaixo do mínimo
 
@@ -532,7 +532,7 @@ order by falta desc, p.nome
 limit 20;
 ```
 
-[Visualizar print do Relatório 07](prints/relatorios/Relatorio%207.PNG)
+[Visualizar print do Relatório 07](estetica-automotiva-bd/prints/relatorios/Relatorio%207.PNG)
 
 ### Relatório 08 – 10 produtos mais consumidos
 
@@ -553,7 +553,7 @@ order by consumo_total desc
 limit 10;
 ```
 
-[Visualizar print do Relatório 08](prints/relatorios/Relatorio%208.PNG)
+[Visualizar print do Relatório 08](estetica-automotiva-bd/prints/relatorios/Relatorio%208.PNG)
 
 ### Relatório 09 – 10 clientes que mais gastaram em 2026
 
@@ -577,7 +577,7 @@ order by total_gasto desc, c.nome
 limit 10;
 ```
 
-[Visualizar print do Relatório 09](prints/relatorios/Relatorio%209.PNG)
+[Visualizar print do Relatório 09](estetica-automotiva-bd/prints/relatorios/Relatorio%209.PNG)
 
 ### Relatório 10 – Histórico de serviços de um cliente
 
@@ -598,7 +598,7 @@ where c.id_cliente = 8
 order by o.data_abertura, o.id_os, s.nome;
 ```
 
-[Visualizar print do Relatório 10](prints/relatorios/Relatorio%2010.PNG)
+[Visualizar print do Relatório 10](estetica-automotiva-bd/prints/relatorios/Relatorio%2010.PNG)
 
 ---
 
